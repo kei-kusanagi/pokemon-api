@@ -1,0 +1,10 @@
+import requests
+import json
+
+url = 'https://pokeapi.co/api/v2/pokemon/'
+def buscarPokemon(nombre):
+    peticion = requests.get(url + str(nombre))
+    respuesta = json.loads(peticion.content)
+    print(respuesta['sprites']['front_shiny'])
+
+buscarPokemon(input("Que pokemon quieres ver: "))
