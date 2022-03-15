@@ -1,10 +1,28 @@
 import requests
 import json
+import pprint
 
 url = 'https://pokeapi.co/api/v2/pokemon/'
 def buscarPokemon(nombre):
     peticion = requests.get(url + str(nombre))
     respuesta = json.loads(peticion.content)
-    print(respuesta['sprites']['front_shiny'])
+    pokemon_data = {
+    'name': '',
+    
+    'abilities': '',
+    
+    'sprites': ''
+    }
+    
+    
+    pokemon_data['name'] = respuesta['name']
+    
+    pokemon_data['abilities'] = respuesta['abilities']
+    
+    pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']
+
+    # print(respuesta['sprites']['other']['official-artwork'])
+    print(pokemon_data)
+
 
 buscarPokemon(input("Que pokemon quieres ver: "))
