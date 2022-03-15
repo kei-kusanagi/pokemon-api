@@ -1,7 +1,8 @@
 import requests
 
 
-url = 'http://pokeapi.co/api/v2/pokemon-form/'
+
+url = 'https://pokeapi.co/api/v2/pokemon/'
 
 response = requests.get(url)
 
@@ -11,7 +12,7 @@ if response.status_code == 200:
     
     payload= response.json()
 
-    results = payload.get('results', [])
+    results = payload.get('results')
 
     print(results)
 
