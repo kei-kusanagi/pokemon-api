@@ -1,11 +1,12 @@
 import requests
 import json
-import pprint
 
 url = 'https://pokeapi.co/api/v2/pokemon/'
-def buscarPokemon(nombre):
+def buscarPokemon():
+    nombre=input("Que pokemon quieres ver: ")
     peticion = requests.get(url + str(nombre))
     respuesta = json.loads(peticion.content)
+
     pokemon_data = {
     'name': '',
     
@@ -14,15 +15,14 @@ def buscarPokemon(nombre):
     'sprites': ''
     }
     
-    
     pokemon_data['name'] = respuesta['name']
-    
     pokemon_data['abilities'] = respuesta['abilities']
-    
     pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']
 
-    # print(respuesta['sprites']['other']['official-artwork'])
+    
     print(pokemon_data)
 
 
-buscarPokemon(input("Que pokemon quieres ver: "))
+buscarPokemon()
+
+
