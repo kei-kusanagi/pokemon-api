@@ -1,5 +1,7 @@
 import requests
 import json
+import imutils
+import cv2
 
 url = 'https://pokeapi.co/api/v2/pokemon/'
 def buscarPokemon():
@@ -17,7 +19,11 @@ def buscarPokemon():
     
     pokemon_data['name'] = respuesta['name']
     pokemon_data['abilities'] = respuesta['abilities']
-    pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']
+    pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']['front_default']
+    # image = cv2.imread(pokemon_data['sprites'])
+    # cv2.imshow('hola', image)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
     
     print(pokemon_data)
