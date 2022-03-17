@@ -1,8 +1,9 @@
+from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import render
 import requests
 import json
-import matplotlib.pyplot as plt
+
 
 # Create your views here.
 def index(*args, **kwars):
@@ -13,7 +14,8 @@ def index(*args, **kwars):
 
 def buscarPokemon(request):
     url = 'https://pokeapi.co/api/v2/pokemon/'
-    nombre=request.POST
+    # nombre=request.POST
+    nombre='rayquaza'
     peticion = requests.get(url + str(nombre))
     respuesta = json.loads(peticion.content)
 
@@ -28,9 +30,11 @@ def buscarPokemon(request):
     pokemon_data['name'] = respuesta['name']
     pokemon_data['abilities'] = respuesta['abilities']
     pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']['front_default']
+    poke_imagen = pokemon_data['sprites']
+    imagen = {'imagen': poke_imagen}
  
-    # print(pokemon_data)
-    return pokemon_data
+    
+    return render(request, 'busqueda.html', imagen)
 
 
 
