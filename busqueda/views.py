@@ -6,16 +6,17 @@ import json
 
 
 # Create your views here.
-def index(*args, **kwars):
-    return HttpResponse("<img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png' alt='MDN'>")
+def index(request):
+    queryset = request.GET.get("busquedapokemon")
+    return render(request, 'index.html', queryset)
 
 
 
 
-def buscarPokemon(request):
+def buscarPokemon(request, queryset):
     url = 'https://pokeapi.co/api/v2/pokemon/'
     # nombre=request.POST
-    nombre='rayquaza'
+    nombre=queryset
     peticion = requests.get(url + str(nombre))
     respuesta = json.loads(peticion.content)
 
