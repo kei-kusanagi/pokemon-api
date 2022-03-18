@@ -1,13 +1,14 @@
 from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import render
-import requests
+
 import json
 
 
 # Create your views here.
 def index(request):
-    queryset = request.GET.get("buscarPokemon")
+    queryset = {}
+    queryset = {'name': request.GET.get }
     return render(request, 'index.html', queryset)
 
 
@@ -16,9 +17,9 @@ def index(request):
 def buscarPokemon(request):
     
     url = 'https://pokeapi.co/api/v2/pokemon/'
-    nombre=request.POST(index)
+    nombre=request.POST
     
-    peticion = requests.get(url + str(nombre))
+    peticion = request.get(url + str(nombre))
     respuesta = json.loads(peticion.content)
 
     pokemon_data = {
