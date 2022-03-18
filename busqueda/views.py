@@ -8,12 +8,12 @@ import json
 # Create your views here.
 def index(request):
     queryset = request.GET.get("busquedapokemon")
-    return render(request, 'index.html', queryset)
+    return render(request, 'index.html')
 
 
 
 
-def buscarPokemon(request, queryset):
+def buscarPokemon(request):
     url = 'https://pokeapi.co/api/v2/pokemon/'
     # nombre=request.POST
     nombre=queryset
