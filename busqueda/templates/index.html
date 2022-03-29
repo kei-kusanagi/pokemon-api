@@ -14,9 +14,15 @@
             Nombre del poquemon a buscar: <input type="search" name="busqueda" placeholder="Nombre del pokemon">
             <button type="submit">Buscar</button>
             {% if imagen %}
+<<<<<<< HEAD
                 <img src='{{ imagen }}' alt='MDN'>
             {% else %}
                 <p>no imagen</p>
+=======
+            <img src='{% imagen %}' alt='MDN'>
+            {% else %}
+            {%print("no imagen")%}
+>>>>>>> c4273ac7c94feb7565e3be8d164d8a00486f5eae
             {% endif %}
 
         </p>
