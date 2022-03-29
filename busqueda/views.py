@@ -39,7 +39,7 @@ def index(request):
             pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']['front_default']
             poke_imagen = pokemon_data['sprites']
             poke_nombre = pokemon_data['name']
-            imagen = {'imagen': poke_imagen, 'nombre': poke_nombre}
+            imagen = {'imagen': poke_imagen, 'nombre': poke_nombre.upper()}
             # nombre = {'nombre': poke_nombre}
             
             
