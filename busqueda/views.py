@@ -1,3 +1,4 @@
+from unicodedata import name
 from urllib import request
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
@@ -21,43 +22,43 @@ def index(request):
         # print("peticion imagen de del poquemon buscado")
         # pprint(peticion)
         if peticion.status_code == 200:
-            # print("peticion")
-            # pprint(peticion)
+            
             respuesta = peticion.json()
-            # print("respuesta")
-            # pprint(respuesta)
             pokemon_data = {
             'name': '',
-            
             'abilities': '',
-            
             'sprites': ''
             }
-            
-            pokemon_data['name'] = respuesta['name']
-            pokemon_data['abilities'] = respuesta['abilities']
+            habilidades_1 = respuesta['abilities']
+            print('habilidades_1')
+            print(habilidades_1)
+            habilidades_2 = habilidades_1[0:1]
+            print('habilidades_2')
+            print(habilidades_2)
+
+            pokemon_data['name'] = respuesta['name'].upper()
+            # pokemon_data['abilities'] = respuesta['abilities']
             pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']['front_default']
-            poke_imagen = pokemon_data['sprites']
-            poke_nombre = pokemon_data['name']
-            imagen = {'imagen': poke_imagen, 'nombre': poke_nombre.upper()}
-            # nombre = {'nombre': poke_nombre}
+            print(pokemon_data['abilities'])
+
+
+
+            return render(request, 'index.html', pokemon_data)
             
-            
-            return render(request, 'index.html', imagen)
         else:
-            # print("no encontro el pokemon")
-            poke_imagen="static/img/404.png"
-            imagen = {'imagen': poke_imagen}
             
-            return render(request, 'index.html', imagen)
+            poke_imagen="static/img/404.png"
+            pokemon_data = {'sprites': poke_imagen}
+            
+            return render(request, 'index.html', pokemon_data)
     
         
     else:
         # print("imagen de pikachu y eevee")
         poke_imagen="static/img/buscar.png"
         
-        imagen = {'imagen': poke_imagen}
-        return render(request, 'index.html', imagen)
+        pokemon_data = {'sprites': poke_imagen}
+        return render(request, 'index.html', pokemon_data)
 
     
 
