@@ -38,22 +38,24 @@ def index(request):
             pokemon_data['abilities'] = respuesta['abilities']
             pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']['front_default']
             poke_imagen = pokemon_data['sprites']
-            imagen = {'imagen': poke_imagen}
-            # print("imagen")
-            # pprint(imagen)
+            poke_nombre = pokemon_data['name']
+            imagen = {'imagen': poke_imagen, 'nombre': poke_nombre}
+            # nombre = {'nombre': poke_nombre}
+            
             
             return render(request, 'index.html', imagen)
         else:
             # print("no encontro el pokemon")
-            poke_imagen="https://p4.wallpaperbetter.com/wallpaper/732/308/18/art-pokemon-illustration-minimalism-pikachu-hd-wallpaper-preview.jpg"
+            poke_imagen="static/img/404.png"
             imagen = {'imagen': poke_imagen}
+            
             return render(request, 'index.html', imagen)
     
         
     else:
         # print("imagen de pikachu y eevee")
-        poke_imagen="https://gaminguardian.com/wp-content/uploads/2018/03/DY-O7RqWsAApCSb.jpg"
-        # print("no encontrado")
+        poke_imagen="static/img/buscar.png"
+        
         imagen = {'imagen': poke_imagen}
         return render(request, 'index.html', imagen)
 
