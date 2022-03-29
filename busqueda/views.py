@@ -9,7 +9,6 @@ import requests
 # Create your views here.
 def index(request):
     queryset = request.GET.get('busqueda')
-<<<<<<< HEAD
     print("request")
     pprint(request)
     print("request.GET")
@@ -59,35 +58,6 @@ def index(request):
         return render(request, 'index.html', imagen)
 
     
-=======
-    if queryset:
-        url = 'https://pokeapi.co/api/v2/pokemon/'
-        nombre=queryset
-        
-        peticion = request.get(url + str(nombre))
-        respuesta = json.loads(peticion.content)
-
-        pokemon_data = {
-        'name': '',
-        
-        'abilities': '',
-        
-        'sprites': ''
-        }
-        
-        pokemon_data['name'] = respuesta['name']
-        pokemon_data['abilities'] = respuesta['abilities']
-        pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']['front_default']
-        poke_imagen = pokemon_data['sprites']
-        imagen = {'imagen': poke_imagen}
-        return render(request, 'index.html')
-    
-        
-    else:
-        print("no encontrado)")
-
-    return render(request, 'index.html')
->>>>>>> c4273ac7c94feb7565e3be8d164d8a00486f5eae
 
 
 
