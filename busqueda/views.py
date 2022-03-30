@@ -26,20 +26,23 @@ def index(request):
             respuesta = peticion.json()
             pokemon_data = {
             'name': '',
-            'abilities': '',
+            'abilitie_desc': '',
+            'abilitie_name': '',
             'sprites': ''
             }
-            habilidades_1 = respuesta['abilities']
-            print('habilidades_1')
-            print(habilidades_1)
-            habilidades_2 = habilidades_1[0:1]
-            print('habilidades_2')
-            print(habilidades_2)
 
             pokemon_data['name'] = respuesta['name'].upper()
-            # pokemon_data['abilities'] = respuesta['abilities']
+            
+            
             pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']['front_default']
-            print(pokemon_data['abilities'])
+            for n in respuesta['abilities']:
+                
+                url_ability = n['ability']['url']
+                name_ability = n['ability']['name']
+                pokemon_data['abilitie_name'] = name_ability
+
+                pokemon_data['abilitie_desc'] = requests.get(url_ability)
+                
 
 
 
@@ -54,7 +57,7 @@ def index(request):
     
         
     else:
-        # print("imagen de pikachu y eevee")
+        # imagen de pikachu y eevee
         poke_imagen="static/img/buscar.png"
         
         pokemon_data = {'sprites': poke_imagen}
