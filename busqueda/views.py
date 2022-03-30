@@ -42,6 +42,10 @@ def index(request):
                 pokemon_data['abilitie_name'] = name_ability
 
                 pokemon_data['abilitie_desc'] = requests.get(url_ability)
+            
+            # peticion_ability = request.get(url_ability)
+            # print("url ability")
+            # pprint(peticion_ability)
                 
 
 
