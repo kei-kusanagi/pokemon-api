@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busqueda</title>
+    {% if icon_shiny %}
+        <link rel="icon" href="{{ icon_shiny }}">
+    {% else %}
+        <link rel="icon" href="{{ icon }}">
+    {% endif %}
 </head>
 
 <body>
@@ -20,7 +25,14 @@
                 <div><h2>{{ abilitie_name }}</h2></div>
                 <!-- <div><a href="{{ abilitie_url }}">{{abilitie_name }}</a></div> -->
                 
-                </div>
+            </div>
+            <div>
+                <img src="{{ front_default }}" alt='MDN'>
+                <img src="{{ front_shiny }}" alt='MDN'>
+                
+                <!-- <div><a href="{{ abilitie_url }}">{{abilitie_name }}</a></div> -->
+                
+            </div>
         {% endif %}
     </form>
 </body>

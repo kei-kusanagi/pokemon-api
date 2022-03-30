@@ -28,13 +28,21 @@ def index(request):
             'name': '',
             'abilitie_desc': '',
             'abilitie_name': '',
-            'sprites': ''
+            'sprites': '',
+            'icon': '',
+            'icon_shiny': '',
+            'front_default':'',
+            'front_shiny':''
             }
 
             pokemon_data['name'] = respuesta['name'].upper()
             
             
             pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']['front_default']
+            pokemon_data['icon'] = respuesta['sprites']['front_default']
+            pokemon_data['icon_shiny'] = respuesta['sprites']['front_shiny']
+            pokemon_data['front_default'] = respuesta['sprites']['other']['home']['front_default']
+            pokemon_data['front_shiny'] = respuesta['sprites']['other']['home']['front_shiny']
             for n in respuesta['abilities']:
                 
                 url_ability = n['ability']['url']
