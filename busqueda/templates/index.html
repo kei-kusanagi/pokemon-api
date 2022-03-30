@@ -20,18 +20,23 @@
         <button type="submit">Buscar</button>
         {% if sprites %}
             <div>
-                <img src="{{ sprites }}" alt='MDN'>
                 <div><h2>{{ name }}</h2></div>
-                <div><h2>{{ abilitie_name }}</h2></div>
-                <!-- <div><a href="{{ abilitie_url }}">{{abilitie_name }}</a></div> -->
+                <img src="{{ sprites }}" alt='MDN'>
+                <div><h2>Habilidad: {{ abilitie_name }}</h2></div>
+                {% for t in pokemon_type %}
+                    
+                    
+                    <div><h2>Tipo: {{ t }}</h2></div>
+
+                    
+                {% endfor %}
                 
             </div>
             <div>
-                <img src="{{ front_default }}" alt='MDN'>
-                <img src="{{ front_shiny }}" alt='MDN'>
-                
-                <!-- <div><a href="{{ abilitie_url }}">{{abilitie_name }}</a></div> -->
-                
+                <tr>
+                    <td><img src="{{ front_default }}" alt='MDN'></td>
+                    <td><img src="{{ front_shiny }}" alt='MDN'></td>
+                </tr>
             </div>
         {% endif %}
     </form>

@@ -32,17 +32,21 @@ def index(request):
             'icon': '',
             'icon_shiny': '',
             'front_default':'',
-            'front_shiny':''
+            'types':'',
+            'front_shiny':'',
+            'pokemon_type': ''
             }
+            pokemon_type=[]
 
             pokemon_data['name'] = respuesta['name'].upper()
-            
+            pokemon_data['types'] = respuesta['types']
             
             pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']['front_default']
             pokemon_data['icon'] = respuesta['sprites']['front_default']
             pokemon_data['icon_shiny'] = respuesta['sprites']['front_shiny']
             pokemon_data['front_default'] = respuesta['sprites']['other']['home']['front_default']
             pokemon_data['front_shiny'] = respuesta['sprites']['other']['home']['front_shiny']
+            
             for n in respuesta['abilities']:
                 
                 url_ability = n['ability']['url']
@@ -51,9 +55,18 @@ def index(request):
 
                 pokemon_data['abilitie_desc'] = requests.get(url_ability)
             
-            # peticion_ability = request.get(url_ability)
-            # print("url ability")
-            # pprint(peticion_ability)
+
+            for t in respuesta['types']:
+                
+                name_type = t['type']['name']
+                pokemon_type.append(name_type)
+
+            
+            # print("types")
+            # pprint(pokemon_data['types'])
+            pokemon_data['pokemon_type']=pokemon_type
+            print("type")
+            pprint(pokemon_data['pokemon_type'])
                 
 
 
