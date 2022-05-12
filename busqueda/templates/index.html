@@ -10,29 +10,42 @@
 
 <body>
     <form method="get">
-        <h1>#Numero o Nombre del poquemon a buscar:</h1> 
-        <input type="search" name="busqueda" placeholder="Nombre o #">
-        <button type="submit">Buscar</button>
-        {% if sprites %}
-            <div>
-                <div><h2>{{ name }}</h2></div>
-                <img src="{{ sprites }}" alt='MDN'>
-                <div><h2>Habilidad: {{ abilitie_name }}</h2></div>
-                <div><h2>Tipo:</h2></div>
-                {% for current_type in pokemon_type %}
- 
-                    <div><h2> {{ current_type }}</h2></div>
+        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12 uppercase">
+            <div class="mx-auto max-w-md divide-y">
+                <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
+                    <h1>#Numero o Nombre del poquemon a buscar:</h1> 
+                        <div class="flex justify-center">                            
+                            <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-purple-600 focus:outline-none" aria-label="Search" aria-describedby="button-addon2" name="busqueda" placeholder="Nombre o #">
+                            <button class="btn inline-block px-6 py-2.5 text-white px-4 py-2 rounded-full bg-cyan-500 shadow-lg shadow-cyan-500/50" type="submit"> Buscar </button>
+                        </div>
+                        <div class="mb-3 xl:w-96">
+                            {% if sprites %}
+                                <div class="drop-shadow-2xl">
+                                    <div><h2>{{ name }}</h2></div>
+                                    <img src="{{ sprites }}" alt='MDN'>
+                                    <div><h2>Habilidad: {{ abilitie_name }}</h2></div>
+                                    <div><h2>Tipo ó tipos:</h2></div>
+                                    {% for current_type in pokemon_type %}
 
-                {% endfor %}
-                
+                                        <div><h2> {{ current_type }}</h2></div>
+
+                                    {% endfor %}
+                                    
+                                </div>
+                                <div>
+                                    <tr>
+                                        {% if front_default %}
+                                            <td><img src="{{ front_default }}" alt='MDN'></td>
+                                            <td><img src="{{ front_shiny }}" alt='MDN'></td>
+                                        {% endif %}
+                                    </tr>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                </div>    
             </div>
-            <div>
-                <tr>
-                    <td><img src="{{ front_default }}" alt='MDN'></td>
-                    <td><img src="{{ front_shiny }}" alt='MDN'></td>
-                </tr>
-            </div>
-        {% endif %}
+        </div>
     </form>
 </body>
 

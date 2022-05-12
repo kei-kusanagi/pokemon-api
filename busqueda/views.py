@@ -17,6 +17,7 @@ def index(request):
     if queryset:
         url = 'https://pokeapi.co/api/v2/pokemon/'
         nombre=str(queryset)
+        nombre=nombre.lower()
         link = url + nombre
         peticion = requests.get(link)
         # print("peticion imagen de del poquemon buscado")

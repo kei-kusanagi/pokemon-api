@@ -8,7 +8,9 @@ import matplotlib.pyplot as plt
 url = 'https://pokeapi.co/api/v2/pokemon/'
 def buscarPokemon():
     nombre=input("Que pokemon quieres ver: ")
+    nombre=nombre.lower()
     peticion = requests.get(url + str(nombre))
+
     respuesta = json.loads(peticion.content)
 
     pokemon_data = {
