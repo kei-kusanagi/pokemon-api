@@ -3,7 +3,7 @@
 
 <body>
     <form method="get">
-        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12 uppercase">
+        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-40 uppercase">
             <div class="mx-auto max-w-md divide-y">
                 <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
                     <h1>#Numero o Nombre del poquemon a buscar:</h1> 
@@ -11,7 +11,7 @@
                             <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-purple-600 focus:outline-none" aria-label="Search" aria-describedby="button-addon2" name="busqueda" placeholder="Nombre o #">
                             <button class="btn inline-block px-6 py-2.5 text-white px-4 py-2 rounded-full bg-red-500 shadow-lg shadow-blue-500/50" type="submit"> Buscar </button>
                         </div>
-                        <div class="mb-3 xl:w-96">
+                        <div class="inline-block px-6 py-2.5 px-4 py-2 justify-center">
                             {% if sprites %}
                                 <div class="drop-shadow-2xl">
                                     <div class="text-red-500"><h2 class="text-3xl text-center">{{ name }}</h2></div>
@@ -22,15 +22,21 @@
                                             <li class="text-red-600"> {{ abilitie_name }} </li>
                                         </ul>
                                         
-                                        <p class="text-3xl">Tipo ó tipos:</p>
-                                    {% endif %}
-                                    {% for current_type in pokemon_type %}
-                                    <ul class="list-disc">
-                                        <li class="text-red-600"> {{ current_type }}</li>
-                                    </ul>
-                                    
-
-                                    {% endfor %}
+                                        <table class="table-auto">
+                                            <thead>
+                                                <tr>
+                                                    <td class="text-3xl">Tipo ó tipos:</td>
+                                                </tr>
+                                            </thead>
+                                            {% endif %}
+                                            <tbody>
+                                                <tr>
+                                                    {% for current_type in pokemon_type %}
+                                                        <td><img src="..\static\img\small\s_{{ current_type }}_es.png" alt='MDN'></td>
+                                                    {% endfor %}
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     
                                 </div>
                                 <div>
@@ -39,8 +45,8 @@
                                                 <table class="table-auto">
                                                     <thead>
                                                     <tr>
-                                                        <td><img src="{{ front_default }}" alt='MDN'></td>
-                                                        <td><img src="{{ front_shiny }}" alt='MDN'></td>
+                                                        <th><img src="{{ front_default }}" alt='MDN'></th>
+                                                        <th><img src="{{ front_shiny }}" alt='MDN'></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
