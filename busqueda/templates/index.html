@@ -3,32 +3,32 @@
 
 <body>
     <form method="get">
-        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-10 uppercase">
-            <div class="mx-auto max-w-md divide-y">
+        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-5 uppercase">
+            <div class="mx-auto max-w-md">
                 <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
                     <h1>#Numero o Nombre del poquemon a buscar:</h1> 
                         <div class="flex justify-center">                            
                             <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-purple-600 focus:outline-none" aria-label="Search" aria-describedby="button-addon2" name="busqueda" placeholder="Nombre o #">
-                            <button class="btn inline-block px-6 py-2.5 text-white px-4 py-2 rounded-full bg-red-500 shadow-lg shadow-blue-500/50" type="submit"> Buscar </button>
+                            <button class="btn inline-block text-white px-4 py-2 rounded-full bg-red-500 shadow-lg shadow-blue-500/50" type="submit"> Buscar </button>
                         </div>
-                        <div class="inline-block px-6 py-2.5 px-4 py-2 justify-center">
+                        <div class="inline-block px-4 py-2 justify-center">
                             {% if sprites %}
                                 <div class="drop-shadow-2xl">
                                     <div class="text-red-500"><h2 class="text-3xl text-center">{{ name }}</h2></div>
-                                    <img src="{{ sprites }}" alt='MDN'>
-                                    {% if name %}
-                                        <p class="text-3xl">Habilidad: </p>
-                                        <ul class="text-left list-disc">
-                                            <li class="text-2xl text-red-600 sm:py-10"> {{ abilitie_name }} </li>
-                                        </ul>
-                                        
-                                        <table class="table-auto sm:py-10">
-                                            <thead>
-                                                <tr>
-                                                    <td class="text-3xl">Tipo ó tipos:</td>
-                                                </tr>
+                                        <img src="{{ sprites }}" alt='MDN'></div>
+                                        {% if name %}
+                                            <p class="text-3xl">Habilidad: </p>
+                                            <ul class="text-left list-disc">
+                                                <li class="text-2xl text-red-600 sm:py-10"> {{ abilitie_name }} </li>
+                                            </ul>
+                                            
+                                            <table class="table-auto sm:py-10">
+                                                <thead>
+                                                    <tr>
+                                                        <td class="text-3xl">Tipo ó tipos:</td>
+                                                    </tr>
                                             </thead>
-                                            {% endif %}
+                                        {% endif %}
                                             <tbody class="sm:py-10">
                                                 <tr>
                                                     {% for current_type in pokemon_type %}
@@ -37,27 +37,19 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    
-                                </div>
+                                    </div>
                                 <div>
-                                    <tr>
-                                        {% if front_default %}
-                                                <table class="hover:table-fixed">
-                                                    <thead>
-                                                    <tr>
-                                                        <th><img src="{{ front_default }}" alt='MDN'></th>
-                                                        <th><img src="{{ front_shiny }}" alt='MDN'></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th>Normal</th>
-                                                        <th>Shiny</th>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                        {% endif %}
-                                    </tr>
+                                    {% if front_default %}
+                                        
+                                        <div class="relative inset-0 rounded-lg justify-center">
+                                            <div clas="fixed top-0 left-0 right-0">
+                                                <img src="{{ front_shiny }}">
+                                            </div>
+                                            <div class="transform absolute origin-top top-0 left-0 right-0 transition duration-500 hover:opacity-0">
+                                                <img class="fixed" src="{{  front_default  }}">
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             {% endif %}
                         </div>
