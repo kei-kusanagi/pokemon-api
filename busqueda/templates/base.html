@@ -3,6 +3,13 @@
 <html>
     <head>
         <link rel="stylesheet" href="{% static 'css/tailwind.css' %}"/>
+        {% if name %}
+            <title>{{ name }}</title>
+            <link rel="icon" href="{{ favicon }}">
+        {% else %}
+            <title>Busqueda Pokemon</title>
+            <link rel="icon" href="..\static\img\favicon.png">
+        {% endif %}
     </head>
     <body>
         {% block content %}

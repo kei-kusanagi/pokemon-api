@@ -10,18 +10,14 @@ import requests
 # Create your views here.
 def index(request):
     queryset = request.GET.get('busqueda')
-    # print("request")
-    # pprint(request)
-    # print("request.GET")
-    # pprint(request.GET)
+
     if queryset:
         url = 'https://pokeapi.co/api/v2/pokemon/'
         nombre=str(queryset)
         nombre=nombre.lower()
         link = url + nombre
         peticion = requests.get(link)
-        # print("peticion imagen de del poquemon buscado")
-        # pprint(peticion)
+        
         if peticion.status_code == 200:
             
             respuesta = peticion.json()
@@ -30,8 +26,7 @@ def index(request):
             'abilitie_desc': '',
             'abilitie_name': '',
             'sprites': '',
-            'icon': '',
-            'icon_shiny': '',
+            'favicon': '',
             'front_default':'',
             'types':'',
             'front_shiny':'',
@@ -43,10 +38,11 @@ def index(request):
             pokemon_data['types'] = respuesta['types']
             
             pokemon_data['sprites'] = respuesta['sprites']['other']['official-artwork']['front_default']
-            pokemon_data['icon'] = respuesta['sprites']['front_default']
-            pokemon_data['icon_shiny'] = respuesta['sprites']['front_shiny']
+            pokemon_data['favicon'] = respuesta['sprites']['front_default']
             pokemon_data['front_default'] = respuesta['sprites']['other']['home']['front_default']
             pokemon_data['front_shiny'] = respuesta['sprites']['other']['home']['front_shiny']
+            print("icono")
+            print(pokemon_data['favicon'])
             
             for n in respuesta['abilities']:
                 
@@ -62,16 +58,7 @@ def index(request):
                 name_type = t['type']['name']
                 pokemon_type.append(name_type)
 
-            
-            # print("types")
-            # pprint(pokemon_data['types'])
             pokemon_data['pokemon_type']=pokemon_type
-            print("type")
-            pprint(pokemon_data['pokemon_type'])
-                
-
-
-
             return render(request, 'index.html', pokemon_data)
             
         else:
@@ -80,7 +67,6 @@ def index(request):
             pokemon_data = {'sprites': poke_imagen}
             
             return render(request, 'index.html', pokemon_data)
-    
         
     else:
         # imagen de pikachu y eevee

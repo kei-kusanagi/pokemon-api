@@ -1,12 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-    <title>Busqueda</title>
-    {% if icon_shiny %}
-        <link rel="icon" href="{{ icon_shiny }}">
-    {% else %}
-        <link rel="icon" href="{{ icon }}">
-    {% endif %}
-</head>
 
 <body>
     <form method="get">
@@ -16,18 +9,26 @@
                     <h1>#Numero o Nombre del poquemon a buscar:</h1> 
                         <div class="flex justify-center">                            
                             <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-purple-600 focus:outline-none" aria-label="Search" aria-describedby="button-addon2" name="busqueda" placeholder="Nombre o #">
-                            <button class="btn inline-block px-6 py-2.5 text-white px-4 py-2 rounded-full bg-cyan-500 shadow-lg shadow-cyan-500/50" type="submit"> Buscar </button>
+                            <button class="btn inline-block px-6 py-2.5 text-white px-4 py-2 rounded-full bg-red-500 shadow-lg shadow-blue-500/50" type="submit"> Buscar </button>
                         </div>
                         <div class="mb-3 xl:w-96">
                             {% if sprites %}
                                 <div class="drop-shadow-2xl">
-                                    <div><h2>{{ name }}</h2></div>
+                                    <div class="text-red-500"><h2 class="text-3xl text-center">{{ name }}</h2></div>
                                     <img src="{{ sprites }}" alt='MDN'>
-                                    <div><h2>Habilidad: {{ abilitie_name }}</h2></div>
-                                    <div><h2>Tipo ó tipos:</h2></div>
+                                    {% if name %}
+                                        <p class="text-3xl">Habilidad: </p>
+                                        <ul class="text-left list-disc">
+                                            <li class="text-red-600"> {{ abilitie_name }} </li>
+                                        </ul>
+                                        
+                                        <p class="text-3xl">Tipo ó tipos:</p>
+                                    {% endif %}
                                     {% for current_type in pokemon_type %}
-
-                                        <div><h2> {{ current_type }}</h2></div>
+                                    <ul class="list-disc">
+                                        <li class="text-red-600"> {{ current_type }}</li>
+                                    </ul>
+                                    
 
                                     {% endfor %}
                                     
@@ -35,14 +36,26 @@
                                 <div>
                                     <tr>
                                         {% if front_default %}
-                                            <td><img src="{{ front_default }}" alt='MDN'></td>
-                                            <td><img src="{{ front_shiny }}" alt='MDN'></td>
+                                                <table class="table-auto">
+                                                    <thead>
+                                                    <tr>
+                                                        <td><img src="{{ front_default }}" alt='MDN'></td>
+                                                        <td><img src="{{ front_shiny }}" alt='MDN'></td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Normal</th>
+                                                        <th>Shiny</th>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
                                         {% endif %}
                                     </tr>
                                 </div>
                             {% endif %}
                         </div>
-                        
+
                 </div>    
             </div>
         </div>
