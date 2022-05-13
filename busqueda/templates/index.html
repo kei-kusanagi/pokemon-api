@@ -3,7 +3,7 @@
 
 <body>
     <form method="get">
-        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-40 uppercase">
+        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-10 uppercase">
             <div class="mx-auto max-w-md divide-y">
                 <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
                     <h1>#Numero o Nombre del poquemon a buscar:</h1> 
@@ -19,17 +19,17 @@
                                     {% if name %}
                                         <p class="text-3xl">Habilidad: </p>
                                         <ul class="text-left list-disc">
-                                            <li class="text-red-600"> {{ abilitie_name }} </li>
+                                            <li class="text-2xl text-red-600 sm:py-10"> {{ abilitie_name }} </li>
                                         </ul>
                                         
-                                        <table class="table-auto">
+                                        <table class="table-auto sm:py-10">
                                             <thead>
                                                 <tr>
                                                     <td class="text-3xl">Tipo ó tipos:</td>
                                                 </tr>
                                             </thead>
                                             {% endif %}
-                                            <tbody>
+                                            <tbody class="sm:py-10">
                                                 <tr>
                                                     {% for current_type in pokemon_type %}
                                                         <td><img src="..\static\img\large\{{ current_type }}_es.png" alt='MDN'></td>
@@ -42,7 +42,7 @@
                                 <div>
                                     <tr>
                                         {% if front_default %}
-                                                <table class="table-auto">
+                                                <table class="hover:table-fixed">
                                                     <thead>
                                                     <tr>
                                                         <th><img src="{{ front_default }}" alt='MDN'></th>
