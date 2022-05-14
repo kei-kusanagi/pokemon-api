@@ -30,7 +30,8 @@ def index(request):
             'front_default':'',
             'types':'',
             'front_shiny':'',
-            'pokemon_type': ''
+            'pokemon_type': '',
+            'id':''
             }
             pokemon_type=[]
 
@@ -41,17 +42,20 @@ def index(request):
             pokemon_data['favicon'] = respuesta['sprites']['front_default']
             pokemon_data['front_default'] = respuesta['sprites']['other']['home']['front_default']
             pokemon_data['front_shiny'] = respuesta['sprites']['other']['home']['front_shiny']
+            pokemon_data['id'] = respuesta['id']
             print("icono")
             print(pokemon_data['favicon'])
             
             for n in respuesta['abilities']:
-                
+                print(n)
                 url_ability = n['ability']['url']
                 name_ability = n['ability']['name']
-                pokemon_data['abilitie_name'] = name_ability
+                pokemon_data['abilities'] =(name_ability,url_ability)
 
-                pokemon_data['abilitie_desc'] = requests.get(url_ability)
-            
+                descripcion = requests.get(url_ability)
+                descripcion= descripcion.json()
+                pokemon_data['abilitie_desc'] = descripcion['flavor_text_entries'][13]['flavor_text']
+            # me quede aqui, falta hacer un bucle for para dividir todas las habilidades igualititito a los tipos
 
             for t in respuesta['types']:
                 
