@@ -31,7 +31,9 @@ def index(request):
             'types':'',
             'front_shiny':'',
             'pokemon_type': '',
-            'id':''
+            'id':'',
+            'next': '',
+            'prev': '',
             }
             pokemon_type=[]
 
@@ -43,8 +45,13 @@ def index(request):
             pokemon_data['front_default'] = respuesta['sprites']['other']['home']['front_default']
             pokemon_data['front_shiny'] = respuesta['sprites']['other']['home']['front_shiny']
             pokemon_data['id'] = respuesta['id']
-            print("icono")
-            print(pokemon_data['favicon'])
+            
+                                    
+            link = str(int(pokemon_data['id'])-1)
+            pokemon_data['poke_prev'] = link
+            link = str(int(pokemon_data['id'])+1)
+            pokemon_data['poke_next'] = link
+
             
             for n in respuesta['abilities']:
                 print(n)
