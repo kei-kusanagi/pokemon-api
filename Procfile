@@ -1,1 +1,1 @@
-web: gunicorn Poke_Api.wsgi --log-file -
+web: gunicorn PokeApi.wsgi --log-file -
